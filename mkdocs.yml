@@ -1,0 +1,33 @@
+site_name: Documentation for sylph - ultrafast, precise metagenomic profiling
+theme:
+  name: material
+
+nav:
+  - Introduction: 
+    - What is sylph? : index.md
+    - What sylph can and cannot do: sylph-can-cannot.md
+  - Install + Quick start: install+quickstart.md
+  - Pre-built databases: pre‐built-databases.md
+  - Cookbook: sylph-cookbook.md
+  - Output format: Output-format.md
+  - Tutorials: 
+    - Tutorial 1 - 5 minute introduction: 5‐minute-sylph-tutorial.md
+    - Tutorial 2 - taxonomic profiling with GTDB: taxonomic-profiling-tutorial.md
+  - Taxonomy integration (sylph-tax): 
+    - Sylph-tax: sylph-tax.md
+    - Install + Quick start: sylph-tax-quick-start.md
+    - Subcommand information: sylph-tax-commands.md
+    - .sylphmpa output format: sylph-tax-output-format.md
+    - Custom taxonomies: sylph-tax-custom-taxonomies.md
+
+
+markdown_extensions:
+  - pymdownx.magiclink
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - autorefs
+
