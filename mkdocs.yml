@@ -1,5 +1,5 @@
 site_name: Documentation for sylph - ultrafast, precise metagenomic profiling
-site_url: https://sylph-docs.github.io/
+site_url: https://sylph-docs.github.io/sylph-docs/
 theme:
   name: material
 
