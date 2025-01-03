@@ -22,3 +22,6 @@ The following [pre-built sylph databases](pre‐built-databases.md) have availab
 | TaraEukaryoticSMAG     | [TARA eukaryotic SMAGs from Delmont et al.](https://www.sciencedirect.com/science/article/pii/S2666979X22000477) | Eukaryote  |
 | IMGVR_4.1              | [IMG/VR 4.1 high-confidence viral OTU genomes](https://genome.jgi.doe.gov/portal/IMG_VR/IMG_VR.home.html)        | Virus      |
 
+## How do I use and install sylph-tax?
+
+See the [sylph-tax install and quick start guide here](sylph-tax-quick-start.md) or the navigation side bar. 

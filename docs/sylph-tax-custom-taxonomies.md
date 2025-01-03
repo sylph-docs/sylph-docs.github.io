@@ -15,22 +15,27 @@ Note: do not add the `t__STRAIN` line.
 
 You obtained two new MAGs: `genome1.fa` and `genome2.fa` and you ran GTDB-tk to get their taxonomic annotation. You want to to profile against the new MAGs and the GTDB database.
 
-1) Create a file called `taxonomy.tsv` as follows:
+1. Create a file called `taxonomy.tsv` as follows:
 
-```
-genome1.fa d__Archaea;(...);s__My new species name`
-genome2.fa d__Bacteria;(...);g__My genus name;s__My species name2`
-```
+    ```
+    genome1.fa d__Archaea;(...);s__My new species name`
+    genome2.fa d__Bacteria;(...);g__My genus name;s__My species name2`
+    ```
 
-2) Use `taxonomy.tsv` as an argument to `sylph-tax taxprof`.
+2. Use `taxonomy.tsv` as an argument to `sylph-tax taxprof`.
 
-```sh
-## profile against gtdb_r220 and your new MAGs
-sylph profile gtdb_r220.syldb my_custom_mags.syldb ... -o gtdb+mags_output.tsv
+    ```sh
+    ## profile against gtdb_r220 and your new MAGs
+    sylph profile gtdb_r220.syldb my_custom_mags.syldb ... -o gtdb+mags_output.tsv
 
-## use your new taxonomy.tsv file and GTDB_r220
-sylph-tax taxprof gtdb+mags_output.tsv -t GTDB_r220 taxonomy.tsv
-```
+    ## use your new taxonomy.tsv file and GTDB_r220
+    sylph-tax taxprof gtdb+mags_output.tsv -t GTDB_r220 taxonomy.tsv
+    ```
+
+!!! note
+
+    The parsing of the taxonomic metadata file is done in the script https://github.com/bluenote-1577/sylph-tax/blob/main/sylph_tax/sylph_to_taxprof.py. Refer to this reference implementation if needed. 
+
 
 !!! warning
 

@@ -19,8 +19,8 @@ pip install .
 #### Step 1: Profile using one or more of the available databases with sylph
 
 ```sh
-# profile something with sylph and GTDB_r220 / IMGVR_4.1 databases
-sylph profile .... gtdb_r220_database.syldb imgvr_database.syldb > sylph_results/my_result.tsv
+# profile something with pre-built GTDB_r220 / IMGVR_4.1 databases
+sylph profile .... gtdb-r220-c200-dbv1.syldb imgvr_c200_v0.3.0.syldb  > sylph_results/my_result.tsv
 ```
 
 #### Step 2: use `sylph-tax` to get taxonomic profile
@@ -32,7 +32,7 @@ sylph profile .... gtdb_r220_database.syldb imgvr_database.syldb > sylph_results
 sylph-tax download --download-to /any/folder
 ```
 
-- Use `sylph-tax taxprof` and specify the `sylph-tax identifiers` [in this table](sylph-tax.md/#taxonomy-integration---available-databases-with-taxonomy-files) corresponding to your database
+- Use `sylph-tax taxprof` and specify the `sylph-tax identifiers` [in this table](sylph-tax.md/#taxonomy-integration-available-databases-with-taxonomy-files) (the first column) corresponding to your database
 
 ```sh
 # incorporate GTDB-r220 and IMGVR-4.1 taxonomies into sylph's results

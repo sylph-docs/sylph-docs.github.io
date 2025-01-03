@@ -4,9 +4,8 @@ theme:
   name: material
 
 nav:
-  - Introduction: 
-    - What is sylph? : index.md
-    - What sylph can and cannot do: sylph-can-cannot.md
+  - Introduction: index.md
+  - What sylph can and cannot do: sylph-can-cannot.md
   - Install + Quick start: install+quickstart.md
   - Pre-built databases: pre‐built-databases.md
   - Cookbook: sylph-cookbook.md
