@@ -166,9 +166,10 @@ sylph profile -u --read-seq-id 99.5 database.syldb sample.sylsp -o results_with_
 
 !!! IMPORTANT
 
-    1. The `-u` option multiplies the `Sequence_abundance` column by the percent of classified reads. 
+    1. The `-u` option multiplies the `Sequence_abundance` column by the percent of classified reads.  
     2. The sum of `Sequence_abundance` column is the percentage of classified reads. 
-    3. `-u` changes the `Eff_cov` column to `True_cov`. `-u` estimates the true coverage, not the effective coverage (which is influenced by read length and error rate).
+    3. `-u` does _not_ change the `Taxonomic_abundance` column. [See here](https://github.com/bluenote-1577/sylph/issues/49) for an explanation on why we do not modify taxonomic abundance.  
+    4. `-u` changes the `Eff_cov` column to `True_cov`. `-u` estimates the true coverage, not the effective coverage (which is influenced by read length and error rate).
 
 
 #### Important notes for estimating unknown percentage
