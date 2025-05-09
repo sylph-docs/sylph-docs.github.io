@@ -136,7 +136,8 @@ sylph profile database.syldb -1 *_1.fq.gz -2 *_2.fq.gz
 ```
 
 - If you input fastas and fastqs into profile/query, sylph will sketch them and then use them. 
-- Parameters can be set in the `sylph profile` command for sketching. We recommend using `sylph sketch` instead, though, as there are more options. 
+- Parameters can be set in the `sylph profile` command for sketching. We recommend using `sylph sketch` instead, though, as there are more options.
+- If you have *FASTA* single-ended sequences (not FASTQ), lazy profiling will not work. You must use `sylph sketch -r my_fasta_reads.fa` instead.
 
 #### Profiling small genomes such as viruses
 
