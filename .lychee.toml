@@ -1,0 +1,49 @@
+# .lychee.toml - Place in your repo root
+# Lychee uses HEAD requests by default - perfect for checking large files!
+
+# Cache results for faster subsequent runs
+cache = true
+
+# Maximum number of concurrent requests
+max_concurrency = 8
+
+# Timeout for each request (in seconds) 
+timeout = 30
+
+# User agent string
+user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+
+# Accept status codes
+accept = [200, 201, 204, 301, 302, 307, 308, 429]
+
+# Force HEAD requests only (default behavior, but explicit)
+method = "head"
+
+# Fallback to GET if HEAD fails (useful for some servers)
+# Set to false if you want to avoid any downloads entirely
+fallback = true
+
+# Exclude specific URLs or patterns
+exclude = [
+    # Exclude localhost and private IPs
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+    # Exclude specific domains that block bots
+    "https://twitter.com/*",
+    "https://x.com/*",
+    # Exclude email links
+    "mailto:*"
+]
+
+# Include patterns (if you want to be more specific)
+# include = ["https://faust.compbio.cs.cmu.edu/*"]
+
+# Exclude specific file types
+exclude_file = [".git"]
+
+# Only check external links
+# include_verbatim = true
+
+# Check local files
+include_local = true

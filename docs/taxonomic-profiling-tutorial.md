@@ -12,7 +12,7 @@ Please [ensure that sylph is installed](install+quickstart.md).
 !!! note  
 
     This tutorial uses the GTDB-R214 database, an older database. A new GTDB version (R220) has 35% more genomes. Feel
-    free to swap out GTDB-r214 for GTDB-r220.
+    free to swap out GTDB-r214 for another GTDB version.
 
 ### Option 1. Download pre-sketched database
 
