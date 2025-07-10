@@ -33,6 +33,7 @@ sylph-tax download --download-to /any/folder
 ```
 
 - Use `sylph-tax taxprof` and specify the `sylph-tax identifiers` [in this table](sylph-tax.md/#taxonomy-integration-available-databases-with-taxonomy-files) (the first column) corresponding to your database
+- The option `-a` or `--annotate-virus-hosts` outputs virus host predictions if using a valid viral database
 
 ```sh
 # incorporate GTDB-r220 and IMGVR-4.1 taxonomies into sylph's results
