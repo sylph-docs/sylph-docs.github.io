@@ -18,6 +18,10 @@ d__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales        
     This is a valid TSV file, but rows prefixed with `#` are comments.
     You can read `.sylphmpa` files with pandas in python like `pd.read_csv('output.sylphmpa',sep='\t', comment='#')`. 
 
+!!! tip
+
+    You can visualize this file in [pavian](https://fbreitwieser.shinyapps.io/pavian/) if you use the `sylph-tax taxprof .... --pavian` option (since v1.5.1). 
+
 There are five important columns:
 
 1. `clade_name`: A string like `d__Bacteria|p__Actinomycetota|c__Acidimicrobiia|o__Acidimicrobiales|f__Ilumatobacteraceae` that describes the clade. `t__STRAIN` represents the exact genome identifier. 
@@ -28,8 +32,10 @@ There are five important columns:
 
 !!! tip
 
-     Viral-host information is available for IMG/VR 4.1. The `-a` option adds a new column in the `.sylphmpa` files associating viral genomes to their hosts. For example:
+     Viral-host information may be available for pre-built virus databases. The `-a` option adds a new column in the `.sylphmpa` files associating viral genomes to their hosts. For example:
 
     - `r__Duplodnaviria|k__Heunggongvirae|p__Uroviricota|c__Caudoviricetes|||||t__IMGVR_UViG_2503982007_000001 ...    d__Bacteria;p__Firmicutes;c__Bacilli;o__Staphylococcales;f__Staphylococcaceae;g__Staphylococcus;s__Staphylococcus epidermidis` 
 
     indicates that IMGVR_UVIG_2503982007's host is Staphylococcus epidermidis.
+
+

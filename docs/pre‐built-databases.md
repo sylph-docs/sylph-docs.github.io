@@ -30,10 +30,10 @@ Most the databases have associated taxonomies that sylph can utilize. See [here 
 | | GTDB r220 | 113,104 species | -c 1000 | 2.6 GB | [gtdb-r220-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | |
 | | GTDB r214 | 85,202 species | -c 200 | 10 GB | [v0.3-c200-gtdb-r214.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c200-gtdb-r214.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/v0.3-c200-gtdb-r214.syldb) | |
 | | GTDB r214 | 85,202 species | -c 1000 | 2 GB | [v0.3-c1000-gtdb-r214.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c1000-gtdb-r214.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/v0.3-c1000-gtdb-r214.syldb) | |
+| **Prokaryotic (GlobDB)** | GlobDB r226 | 306,260 species | -c 200 | 32 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
  **Prokaryotic (Other)** | OceanDNA | 8,466 ocean MAGs | -c 200 | 800 MB | [OceanDNA-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/OceanDNA-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/OceanDNA-c200-v0.3.syldb) | |
 | | SMAG | 21,077 soil MAGs | 200 | 2.5 GB | [SMAG-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/SMAG-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/SMAG-c200-v0.3.syldb) | |
 | | UHGG v2.0.1 **(not dereplicated)**| 289,232 gut genomes | -c 200 | 26 GB | [uhgg_all_c200_v0.3.0.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/uhgg_all_c200_v0.3.0.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/uhgg_all_c200_v0.3.0.syldb) | Not dereplicated - do not use for profiling |
-| | GlobDB r226 | 306,260 species | -c 200 | 32 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
 | **Viral** | UHGV | 171,338 gut vOTUs | -c 100 | 0.4 GB | [uhgv_c100_dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/uhgv_c100_dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/uhgv_c100_dbv1.syldb) | |
 | | UHGV | 171,338 gut vOTUs | -c 200 | 0.2 GB | [uhgv_c200_dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/uhgv_c200_dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/uhgv_c200_dbv1.syldb) | |
 | | IMG/VR4.1 | 2,917,516 viral genomes | -c 200 | 2 GB | [imgvr_c200_v0.3.0.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/imgvr_c200_v0.3.0.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/imgvr_c200_v0.3.0.syldb) | |
@@ -43,7 +43,7 @@ Most the databases have associated taxonomies that sylph can utilize. See [here 
 ## Parameter Guide
 - **-c 200**: More sensitive, larger file size
 - **-c 1000**: More efficient, smaller file size, less sensitive
-- **-c 100**: More sensitive for smaller genomes. 
+- **-c 100**: More sensitive but primarily for smaller genomes. 
 
 !!! note
 
@@ -66,7 +66,15 @@ The [GTDB](https://gtdb.ecogenomic.org/) database is a high-quality, curated tax
 
 - GTDB r214 database (85,202 species representative genomes) - April 28, 2023
 
+## GlobDB - massive prokaryotic catalogue encompassing many other genome sets
+
+[GlobDB](https://globdb.org/) is a catalogue of > 300,000 prokaryotic genomes/MAGs. Their database is dereplicated at ~96% ANI. GlobDB **encompasses 14 other large databases (including GTDB)**. The sylph database is hosted on their website. 
+
 ## Other prokaryotic databases
+
+!!! tip
+
+    GlobDB encompasses SMAG and a OceanDNA. We **highly recommend using GlobDB if possible** over these databases.  
 
 1. [OceanDNA](https://doi.org/10.1038/s41597-022-01392-5) catalogue of 8,466 ocean prokaryotic MAGs, `-c 200` (800 MB) 
 2. [SMAG](https://www.nature.com/articles/s41467-023-43000-z) catalogue of soil 21,077 soil MAGs, `-c 200` (2.5 GB):

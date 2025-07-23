@@ -16,7 +16,9 @@ cd sylph
 # sketch reads and genomes. fastq -> samples, fasta -> queries
 sylph sketch test_files/o157_reads.fastq test_files/e.coli*.fa -o database
 ```
+
 There are two types of files: `*.syldb` and `*.sylsp`.
+
 - **FASTQ files** are treated as **samples** and turn into `*.sylsp` 
 - **FASTA files** are treated as **genomes** and turn into `*.syldb`
 - For other options, such as paired-end reads, see the [cookbook](sylph-cookbook.md)

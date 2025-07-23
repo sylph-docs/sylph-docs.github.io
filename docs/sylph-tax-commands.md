@@ -17,6 +17,7 @@ sylph-tax taxprof sylph_results/*.tsv  -o prefix_or_folder/ -t {sylph-tax identi
 * `-t/--taxonomy-metadata`:  A list of `sylph-tax identifier`s specified [in this table](sylph-tax.md/#taxonomy-integration-available-databases-with-taxonomy-files) (e.g. `GTDB_r220` or `IMGVR_4.1`).  Multiple taxonomy metadata files can be input. [Custom taxonomy files are also possible](sylph-tax-custom-taxonomies.md).
 * `-o`: prepends this prefix to all of the output files. One file is output per sample in `sylph_output.tsv`
 * `-a/--annotate-virus-hosts`: annotates viral genomes with host information metadata (only works if using a pre-built viral database)
+* `--pavian`: outputs a taxonomy file that can be visualized via [pavian](https://fbreitwieser.shinyapps.io/pavian/) but removes some relevant statistics. 
 * Output suffix is `.sylphmpa`.  
 
 !!! tip
