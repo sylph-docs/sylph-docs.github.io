@@ -1,0 +1,972 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sylph-docs.github.io/taxonomic-profiling-tutorial/">
+      
+      
+        <link rel="prev" href="../5%E2%80%90minute-sylph-tutorial/">
+      
+      
+        <link rel="next" href="../sylph-tax/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Tutorial 2 - taxonomic profiling with GTDB - Documentation for sylph - ultrafast, precise metagenomic profiling</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-download-the-gtdb-r214-database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-header__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation for sylph - ultrafast, precise metagenomic profiling
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial 2 - taxonomic profiling with GTDB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-nav__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation for sylph - ultrafast, precise metagenomic profiling
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-can-cannot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What sylph can and cannot do
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install%2Bquickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre%E2%80%90built-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-built databases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Output-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Output format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5%E2%80%90minute-sylph-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 1 - 5 minute introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - taxonomic profiling with GTDB
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - taxonomic profiling with GTDB
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-download-the-gtdb-r214-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download the GTDB-R214 database.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Download the GTDB-R214 database.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-download-pre-sketched-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1. Download pre-sketched database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-create-your-own-index-if-you-already-have-gtdb-downloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2. Create your own index (if you already have GTDB downloaded)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-download-and-index-mouse-gut-metagenome" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download and index mouse-gut metagenome
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-metagenomic-profiling-with-sylph" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Metagenomic profiling with sylph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-get-a-taxonomic-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Get a taxonomic profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Taxonomy integration (sylph-tax)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Taxonomy integration (sylph-tax)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sylph-tax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Subcommand information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-output-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    .sylphmpa output format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-custom-taxonomies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom taxonomies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-download-the-gtdb-r214-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download the GTDB-R214 database.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Download the GTDB-R214 database.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-download-pre-sketched-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1. Download pre-sketched database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-create-your-own-index-if-you-already-have-gtdb-downloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2. Create your own index (if you already have GTDB downloaded)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-download-and-index-mouse-gut-metagenome" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download and index mouse-gut metagenome
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-metagenomic-profiling-with-sylph" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Metagenomic profiling with sylph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-get-a-taxonomic-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Get a taxonomic profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Tutorial 2 - taxonomic profiling with GTDB</h1>
+
+<p>In this tutorial, we will use sylph to do</p>
+<ol>
+<li>Multi-sample prokaryotic metagenomic profiling with the GTDB-R214 database </li>
+<li>output a taxonomic output like MetaPhlAn or Kraken2. </li>
+</ol>
+<p>Please <a href="../install%2Bquickstart/">ensure that sylph is installed</a>.</p>
+<hr />
+<h2 id="1-download-the-gtdb-r214-database">1. Download the GTDB-R214 database.</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial uses the GTDB-R214 database, an older database. A new GTDB version (R220) has 35% more genomes. Feel
+free to swap out GTDB-r214 for another GTDB version.</p>
+</div>
+<h3 id="option-1-download-pre-sketched-database">Option 1. Download pre-sketched database</h3>
+<p>Download the pre-sketched (i.e., indexed) GTDB-R214 database <a href="../pre%E2%80%90built-databases/">provided here</a>. For example,</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://storage.googleapis.com/sylph-stuff/v0.3-c1000-gtdb-r214.syldb<span class="w"> </span>-O<span class="w"> </span>gtdb_database.syldb
+
+<span class="c1"># OR</span>
+
+<span class="c1">#wget https://storage.googleapis.com/sylph-stuff/v0.3-c200-gtdb-r214.syldb -O gtdb_database.syldb</span>
+</code></pre></div>
+<ul>
+<li>The <code>c1000</code> database is smaller and faster, but less sensitive for low-abundance genomes compared to the <code>c200</code> database.</li>
+</ul>
+<h3 id="option-2-create-your-own-index-if-you-already-have-gtdb-downloaded">Option 2. Create your own index (if you already have GTDB downloaded)</h3>
+<p>Assuming you have the GTDB-R214 genome database present in a folder called <code>gtdb_genomes_reps_r214/</code>, do the following:</p>
+<ol>
+<li>Compile all GTDB genomes into a list file: <code>find gtdb_genomes_reps_r214 | grep .fna &gt; gtdb_all.txt</code></li>
+<li>Create a database with: <code>sylph sketch -l gtdb_all.txt -t 50 -o gtdb_database</code></li>
+</ol>
+<h2 id="2-download-and-index-mouse-gut-metagenome">2. Download and index mouse-gut metagenome</h2>
+<p>Let's download and index two mouse gut metagenomes:</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://storage.googleapis.com/sylph-stuff/mouse_1.fq.gz
+wget<span class="w"> </span>https://storage.googleapis.com/sylph-stuff/B-mouse_1.fq.gz
+
+wget<span class="w"> </span>https://storage.googleapis.com/sylph-stuff/mouse_2.fq.gz
+wget<span class="w"> </span>https://storage.googleapis.com/sylph-stuff/B-mouse_2.fq.gz
+</code></pre></div>
+<p>We now have two sets of paired-reads. For paired-end reads, sylph must sketch the reads first as follows:</p>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-1<span class="w"> </span>*mouse_1.fq.gz<span class="w"> </span>-2<span class="w"> </span>*mouse_2.fq.gz<span class="w"> </span>
+</code></pre></div>
+<p><strong>sylph can sketch multiple samples at once.</strong> This allows for multi-threaded sketching and is more efficient.</p>
+<p>This outputs two files called <code>mouse_1.fq.gz.paired.sylsp</code> and <code>B-mouse_1.fq.gz.paired.sylsp</code>. The <code>paired</code> indicates the sketch was created with the <code>-1,-2</code> options, and the <code>sylsp</code> indicates that it is indexed. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do not interleave paired-end reads.</strong> Sylph will give more accurate results if you do not concatenate/interleave your reads. </p>
+</div>
+<h2 id="3-metagenomic-profiling-with-sylph">3. Metagenomic profiling with sylph</h2>
+<p>To multi-sample profile with sylph, run the following:</p>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w"> </span>gtdb_database.syldb<span class="w"> </span>*mouse_1.fq.gz.paired.sylsp<span class="w">  </span>-t<span class="w"> </span><span class="m">10</span><span class="w"> </span>-o<span class="w"> </span>results.tsv
+</code></pre></div>
+<p>This uses 10 threads to profile the metagenome against our database into a file called <code>results.tsv</code>. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since <strong>sylph v0.6</strong>, direct profiling of paired-end reads <em>without sketching</em> is possible:
+ <div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w"> </span>gtdb_database.syldb<span class="w"> </span>-1<span class="w"> </span>*_1.fq.gz<span class="w"> </span>-2<span class="w"> </span>*_2.fq.gz<span class="w"> </span>-t<span class="w"> </span><span class="m">10</span><span class="w"> </span>-o<span class="w"> </span>results.tsv
+</code></pre></div></p>
+</div>
+<p>Inspecting the <code>results.tsv</code> file gives:</p>
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>results.tsv<span class="w"> </span>
+Sample_file<span class="w"> </span>Genome_file<span class="w"> </span>Taxonomic_abundance<span class="w"> </span>Sequence_abundance<span class="w">  </span>Adjusted_ANI<span class="w">    </span>Eff_cov<span class="w"> </span>ANI_5-95_percentile<span class="w"> </span>Eff_lambda<span class="w">  </span>Lambda_5-95_percentile<span class="w">  </span>Median_cov<span class="w">  </span>Mean_cov_geq1<span class="w">   </span>Containment_ind<span class="w"> </span>Naive_ANI<span class="w">   </span>Contig_name
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/910/577/315/GCA_910577315.1_genomic.fna.gz<span class="w">  </span><span class="m">10</span>.6258<span class="w"> </span><span class="m">10</span>.1684<span class="w"> </span><span class="m">97</span>.66<span class="w">   </span><span class="m">0</span>.656<span class="w">   </span><span class="m">97</span>.33-98.07<span class="w"> </span><span class="m">0</span>.656<span class="w">   </span><span class="m">0</span>.55-0.76<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.456<span class="w">   </span><span class="m">616</span>/2624<span class="w">    </span><span class="m">95</span>.43<span class="w">   </span>CAJTME010000001.1<span class="w"> </span>TPA_asm:<span class="w"> </span>uncultured<span class="w"> </span>Muribaculaceae<span class="w"> </span>bacterium<span class="w"> </span>isolate<span class="w"> </span>MGBC104416<span class="w"> </span>genome<span class="w"> </span>assembly,<span class="w"> </span>contig:<span class="w"> </span>MGBC104416.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCF/001/945/605/GCF_001945605.1_genomic.fna.gz<span class="w">  </span><span class="m">9</span>.1588<span class="w">  </span><span class="m">7</span>.5114<span class="w">  </span><span class="m">98</span>.36<span class="w">   </span><span class="m">0</span>.565<span class="w">   </span><span class="m">97</span>.92-98.84<span class="w"> </span><span class="m">0</span>.565<span class="w">   </span><span class="m">0</span>.47-0.66<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.421<span class="w">   </span><span class="m">553</span>/2100<span class="w">    </span><span class="m">95</span>.79<span class="w">   </span>NZ_MPKA01000006.1<span class="w"> </span>Dubosiella<span class="w"> </span>newyorkensis<span class="w"> </span>strain<span class="w"> </span>NYU-BL-A4<span class="w"> </span>NODE_100_length_1023_cov_1250.21_ID_199,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/910/589/675/GCA_910589675.1_genomic.fna.gz<span class="w">  </span><span class="m">8</span>.3282<span class="w">  </span><span class="m">5</span>.1014<span class="w">  </span><span class="m">95</span>.18<span class="w">   </span><span class="m">0</span>.514<span class="w">   </span><span class="m">94</span>.47-95.99<span class="w"> </span><span class="m">0</span>.514<span class="w">   </span><span class="m">0</span>.37-0.67<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.299<span class="w">   </span><span class="m">144</span>/1629<span class="w">    </span><span class="m">92</span>.47<span class="w">   </span>CAJUTO010000001.1<span class="w"> </span>uncultured<span class="w"> </span>Lactobacillus<span class="w"> </span>sp.<span class="w"> </span>isolate<span class="w"> </span>MGBC166701<span class="w"> </span>genome<span class="w"> </span>assembly,<span class="w"> </span>contig:<span class="w"> </span>MGBC166701.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/910/588/855/GCA_910588855.1_genomic.fna.gz<span class="w">  </span><span class="m">8</span>.1294<span class="w">  </span><span class="m">11</span>.9822<span class="w"> </span><span class="m">98</span>.20<span class="w">   </span><span class="m">0</span>.502<span class="w">   </span><span class="m">97</span>.87-98.59<span class="w"> </span><span class="m">0</span>.502<span class="w">   </span><span class="m">0</span>.43-0.56<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.345<span class="w">   </span><span class="m">892</span>/3903<span class="w">    </span><span class="m">95</span>.35<span class="w">   </span>CAJUSR010000001.1<span class="w"> </span>TPA_asm:<span class="w"> </span>uncultured<span class="w"> </span>Kineothrix<span class="w"> </span>sp.<span class="w"> </span>isolate<span class="w"> </span>MGBC162921<span class="w"> </span>genome<span class="w"> </span>assembly,<span class="w"> </span>contig:<span class="w"> </span>MGBC162921.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/910/579/675/GCA_910579675.1_genomic.fna.gz<span class="w">  </span><span class="m">7</span>.7809<span class="w">  </span><span class="m">7</span>.5080<span class="w">  </span><span class="m">98</span>.71<span class="w">   </span><span class="m">0</span>.480<span class="w">   </span><span class="m">98</span>.27-99.11<span class="w"> </span><span class="m">0</span>.480<span class="w">   </span><span class="m">0</span>.40-0.55<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.303<span class="w">   </span><span class="m">654</span>/2522<span class="w">    </span><span class="m">95</span>.74<span class="w">   </span>CAJTUF010000001.1<span class="w"> </span>TPA_asm:<span class="w"> </span>uncultured<span class="w"> </span>Muribaculaceae<span class="w"> </span>bacterium<span class="w"> </span>isolate<span class="w"> </span>MGBC114255<span class="w"> </span>genome<span class="w"> </span>assembly,<span class="w"> </span>contig:<span class="w"> </span>MGBC114255.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCF/001/591/705/GCF_001591705.1_genomic.fna.gz<span class="w">  </span><span class="m">7</span>.1538<span class="w">  </span><span class="m">6</span>.0999<span class="w">  </span><span class="m">96</span>.41<span class="w">   </span><span class="m">0</span>.441<span class="w">   </span><span class="m">95</span>.86-97.20<span class="w"> </span><span class="m">0</span>.441<span class="w">   </span><span class="m">0</span>.32-0.54<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.216<span class="w">   </span><span class="m">264</span>/2258<span class="w">    </span><span class="m">93</span>.31<span class="w">   </span>NZ_BCVK01000001.1<span class="w"> </span>Lactococcus<span class="w"> </span>lactis<span class="w"> </span>subsp.<span class="w"> </span>cremoris<span class="w"> </span>NBRC<span class="w"> </span><span class="m">100676</span>,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCF/000/403/395/GCF_000403395.2_genomic.fna.gz<span class="w">  </span><span class="m">6</span>.9472<span class="w">  </span><span class="m">9</span>.1490<span class="w">  </span><span class="m">95</span>.75<span class="w">   </span><span class="m">0</span>.429<span class="w">   </span><span class="m">95</span>.27-96.45<span class="w"> </span><span class="m">0</span>.429<span class="w">   </span><span class="m">0</span>.32-0.51<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.251<span class="w">   </span><span class="m">299</span>/3240<span class="w">    </span><span class="m">92</span>.60<span class="w">   </span>NZ_KE159657.1<span class="w"> </span>Anaerotruncus<span class="w"> </span>sp.<span class="w"> </span>G3<span class="o">(</span><span class="m">2012</span><span class="o">)</span><span class="w"> </span>strain<span class="w"> </span>G3<span class="w"> </span>acPFl-supercont1.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/003/833/075/GCA_003833075.1_genomic.fna.gz<span class="w">  </span><span class="m">5</span>.7036<span class="w">  </span><span class="m">7</span>.2196<span class="w">  </span><span class="m">97</span>.02<span class="w">   </span><span class="m">0</span>.352<span class="w">   </span><span class="m">96</span>.46-97.75<span class="w"> </span><span class="m">0</span>.352<span class="w">   </span><span class="m">0</span>.27-0.42<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.234<span class="w">   </span><span class="m">394</span>/3324<span class="w">    </span><span class="m">93</span>.35<span class="w">   </span>RIAY01000001.1<span class="w"> </span>Muribaculaceae<span class="w"> </span>bacterium<span class="w"> </span>Isolate-036<span class="w"> </span><span class="o">(</span>Harlan<span class="o">)</span><span class="w"> </span>seq1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+mouse_1.fq<span class="w">  </span>gtdb_genomes_reps_r214/database/GCA/910/587/685/GCA_910587685.1_genomic.fna.gz<span class="w">  </span><span class="m">5</span>.0394<span class="w">  </span><span class="m">3</span>.2464<span class="w">  </span><span class="m">97</span>.82<span class="w">   </span><span class="m">0</span>.311<span class="w">   </span><span class="m">97</span>.06-98.58<span class="w"> </span><span class="m">0</span>.311<span class="w">   </span><span class="m">0</span>.24-0.39<span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span>.200<span class="w">   </span><span class="m">230</span>/1672<span class="w">    </span><span class="m">93</span>.80<span class="w">   </span>CAJUMY010000001.1<span class="w"> </span>TPA_asm:<span class="w"> </span>uncultured<span class="w"> </span>Christensenellaceae<span class="w"> </span>bacterium<span class="w"> </span>isolate<span class="w"> </span>MGBC161649<span class="w"> </span>genome<span class="w"> </span>assembly,<span class="w"> </span>contig:<span class="w"> </span>MGBC161649.1,<span class="w"> </span>whole<span class="w"> </span>genome<span class="w"> </span>shotgun<span class="w"> </span>sequence
+</code></pre></div>
+<p>You can check <a href="../Output-format/">the output format documentation</a> for the definitions of each of the columns. </p>
+<h2 id="4-get-a-taxonomic-profile">4. Get a taxonomic profile</h2>
+<p>Sylph's TSV output has no taxonomic information, only genome information. To get a taxonomic profile, we integrate GTDB's taxonomy with sylph's output. <a href="../sylph-tax/">More information can be found here</a>.</p>
+<p>Run the following commands:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>sylph-tax
+
+<span class="c1"># only have to do this once</span>
+mkdir<span class="w"> </span>taxonomy_file_folder
+sylph-tax<span class="w"> </span>download<span class="w"> </span>--download-to<span class="w"> </span>taxonomy_file_folder
+
+sylph-tax<span class="w"> </span>taxprof<span class="w"> </span>results.tsv<span class="w"> </span>-t<span class="w"> </span>GTDB_r214<span class="w"> </span>-o<span class="w"> </span>prefix_
+
+ls<span class="w"> </span>prefix_mouse_1.fq.gz.sylphmpa
+ls<span class="w"> </span>prefix_B-mouse_2.fq.gz.sylphmpa
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code>-t</code>'s metadata file must correspond to database used. See <a href="https://github.com/bluenote-1577/sylph-tax">sylph-tax</a> for available database. If you use GTDB-R220 or R214, you must use the <strong>correct</strong> R220 or R214 taxonomy. </p>
+</div>
+<p>The script outputs a new file called <code>prefix_MYSAMPLENAME.sylphmpa</code> for each sample in the results file. Investigating one file gives the following:</p>
+<div class="highlight"><pre><span></span><code>head -n 20 prefix_mouse_1.fq.sylphmpa                                                                                       
+#SampleID   mouse_1.fq
+clade_name  relative_abundance  sequence_abundance  ANI (if strain-level)
+d__Bacteria 100.00010000000002  99.99999999999999   NA
+d__Bacteria|p__Bacillota    24.640800000000002  18.712699999999998  NA
+d__Bacteria|p__Bacillota_A  47.333499999999994  52.5969 NA
+d__Bacteria|p__Bacillota_A|c__Clostridia    47.333499999999994  52.5969 NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales  9.0019  6.252800000000001   NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__Pumilibacteraceae 3.9625  3.0064  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__Pumilibacteraceae|g__Pumilibacter 3.9625  3.0064  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__Pumilibacteraceae|g__Pumilibacter|s__Pumilibacter 3.9625  3.0064  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__Pumilibacteraceae|g__Pumilibacter|s__Pumilibacter|t__GCA_910587595.1  3.9625  3.0064  95.45
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__UBA3700   5.0394  3.2464  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__UBA3700|g__MGBC161649 5.0394  3.2464  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__UBA3700|g__MGBC161649|s__MGBC161649   5.0394  3.2464  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Christensenellales|f__UBA3700|g__MGBC161649|s__MGBC161649|t__GCA_910587685.1    5.0394  3.2464  97.82
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales  20.3153 24.426900000000003  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae   20.3153 24.426900000000003  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__1XD42-69   4.1703  4.1626  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__1XD42-69|s__1XD42-69   4.1703  4.1626  NA
+d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__1XD42-69|s__1XD42-69|t__GCA_910589105.1    4.1703  4.1626  97.47
+</code></pre></div>
+<p>This file is a taxonomic profile similar to what MetaPhlAn outputs. Each taxonomic rank has an associated taxonomic or sequence abundance. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Taxonomic abundance normalizes by genome sizes, whereas sequence abundance is the % of reads assigned to a taxonomic rank. See <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8184642/">Sun et al., 2021</a> for information.</p>
+</div>
+<p>Note that the <code>t__GCA_...</code> ranks, which are strain/genome-level ranks, have an associated ANI output. The other ranks do not. </p>
+<h2 id="5-conclusion">5. Conclusion</h2>
+<p>We have just shown how sylph can do multi-sample profiling against the GTDB-R214 database very efficiently while giving ANI information as well. </p>
+<p>To do taxonomic profiling with other databases, see <a href="../sylph-tax/">the manual</a>.  Alternatively, consider just analyzing sylph's resulting TSV file; it contains some useful information not present in the taxonomic profile. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

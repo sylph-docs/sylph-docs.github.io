@@ -1,0 +1,1322 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sylph-docs.github.io/sylph-cookbook/">
+      
+      
+        <link rel="prev" href="../pre%E2%80%90built-databases/">
+      
+      
+        <link rel="next" href="../Output-format/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Cookbook - Documentation for sylph - ultrafast, precise metagenomic profiling</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sylph-cookbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-header__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation for sylph - ultrafast, precise metagenomic profiling
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cookbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-nav__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation for sylph - ultrafast, precise metagenomic profiling
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-can-cannot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What sylph can and cannot do
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install%2Bquickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre%E2%80%90built-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-built databases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Cookbook
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookbook
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-sketching-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read sketching options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read sketching options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sketching-many-paired-end-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching many paired-end reads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-identical-reads-with-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renaming (identical) reads with -S
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sketching-single-end-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching single-end reads
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-sketching-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database sketching options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database sketching options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database-of-fasta-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a database of fasta files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-databases-to-dereplicate-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom databases: to dereplicate or not?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database-of-contigs-or-if-genomes-are-all-in-one-fasta-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a database of contigs or if genomes are all in one fasta file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sketching-a-large-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching a large database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiling-and-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling and querying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiling and querying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-profiling-and-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard profiling and querying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-profiling-and-querying-without-sketching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy profiling and querying without sketching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-small-genomes-such-as-viruses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling small genomes such as viruses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimating-percentage-of-unknown-reads-in-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimating percentage of unknown reads in database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-notes-for-estimating-unknown-percentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important notes for estimating unknown percentage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimating-coverage-for-small-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimating coverage for small contigs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taxonomy-integration-with-sylph-tax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomy integration with sylph-tax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Taxonomy integration with sylph-tax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-taxonomic-integration-one-metagenome-one-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard taxonomic integration (one metagenome, one database)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomic-integration-more-than-1-metagenome-more-than-1-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomic integration: more than 1 metagenome, more than 1 database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-taxonomies-for-custom-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom taxonomies for custom databases?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Output-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Output format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5%E2%80%90minute-sylph-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 1 - 5 minute introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomic-profiling-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - taxonomic profiling with GTDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Taxonomy integration (sylph-tax)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Taxonomy integration (sylph-tax)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sylph-tax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Subcommand information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-output-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    .sylphmpa output format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-custom-taxonomies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom taxonomies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-sketching-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read sketching options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read sketching options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sketching-many-paired-end-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching many paired-end reads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-identical-reads-with-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renaming (identical) reads with -S
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sketching-single-end-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching single-end reads
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-sketching-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database sketching options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database sketching options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database-of-fasta-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a database of fasta files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-databases-to-dereplicate-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom databases: to dereplicate or not?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database-of-contigs-or-if-genomes-are-all-in-one-fasta-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a database of contigs or if genomes are all in one fasta file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sketching-a-large-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sketching a large database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiling-and-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling and querying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiling and querying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-profiling-and-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard profiling and querying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-profiling-and-querying-without-sketching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy profiling and querying without sketching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-small-genomes-such-as-viruses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling small genomes such as viruses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimating-percentage-of-unknown-reads-in-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimating percentage of unknown reads in database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-notes-for-estimating-unknown-percentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important notes for estimating unknown percentage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimating-coverage-for-small-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimating coverage for small contigs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taxonomy-integration-with-sylph-tax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomy integration with sylph-tax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Taxonomy integration with sylph-tax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-taxonomic-integration-one-metagenome-one-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard taxonomic integration (one metagenome, one database)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomic-integration-more-than-1-metagenome-more-than-1-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomic integration: more than 1 metagenome, more than 1 database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-taxonomies-for-custom-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom taxonomies for custom databases?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sylph-cookbook">Sylph cookbook</h1>
+<ul>
+<li><a href="#read-sketching-options">Read sketching options</a><ul>
+<li><a href="#sketching-many-paired-end-reads">Sketching many paired-end reads</a></li>
+<li><a href="#sketching-single-end-reads">Sketching single-end reads</a></li>
+</ul>
+</li>
+<li><a href="#database-sketching-options">Database sketching options</a><ul>
+<li><a href="#creating-a-database-of-fasta-files">Creating a database of fasta files</a></li>
+<li><a href="#custom-databases-to-dereplicate-or-not">Custom databases: to dereplicate or not?</a></li>
+<li><a href="#creating-a-database-of-contigs-or-if-genomes-are-all-in-one-fasta-file">Creating a database of contigs or if genomes are all in one fasta file</a></li>
+<li><a href="#sketching-a-large-database">Sketching a large database</a></li>
+</ul>
+</li>
+<li><a href="#profiling-and-querying">Profiling/querying</a><ul>
+<li><a href="#standard-profiling-and-querying">Standard profiling and querying</a></li>
+<li><a href="#lazy-profiling-and-querying-without-sketching">Lazy profiling and querying without sketching</a></li>
+<li><a href="#profiling-small-genomes-such-as-viruses">Profiling small genomes such as viruses</a></li>
+<li><a href="#estimating-percentage-of-unknown-reads-in-database">Estimating percentage of unknown reads</a></li>
+<li><a href="#important-notes-for-estimating-unknown-percentage">Important notes for estimating unknown percentage</a></li>
+</ul>
+</li>
+<li><a href="#taxonomy-integration-with-sylph-tax">Taxonomy integration with sylph-tax</a><ul>
+<li><a href="#standard-taxonomic-integration-one-metagenome-one-database">Standard taxonomic integration (one metagenome, one database)</a></li>
+<li><a href="#taxonomic-integration-more-than-1-metagenome-more-than-1-database">Taxonomic integration: more than 1 metagenome, more than 1 database</a></li>
+<li><a href="#custom-taxonomies-for-custom-databases">Custom taxonomies for custom databases</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="read-sketching-options">Read sketching options</h2>
+<p>"Sketching" is equivalently to "indexing". Sketching reads gives you a small index that you can efficiently reuse. </p>
+<h4 id="sketching-many-paired-end-reads">Sketching many paired-end reads</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-1<span class="w"> </span>*_1.fastq.gz<span class="w"> </span>-2<span class="w"> </span>*_2.fastq.gz<span class="w"> </span>-d<span class="w"> </span>my_sketches<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span><span class="w"> </span>
+</code></pre></div>
+<ul>
+<li><code>-1/-2</code>: Input the first and second paired-end reads; can be gzipped. </li>
+<li><code>-t</code>: parallelized sketching over the samples. Each sample uses 1 thread: e.g. 5 samples would use 5 threads. </li>
+<li><code>-d</code>: all read sketches are output to a new folder called <code>my_sketches</code> with <code>.sylsp</code> suffixes. The folder will be created if it is not present.</li>
+</ul>
+<h4 id="renaming-identical-reads-with-s">Renaming (identical) reads with <code>-S</code></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have identical read names but different folder names (e.g. <code>folder1/reads.fq, folder2/reads.fq</code>) sylph will only output one <code>reads.fq.sylsp</code> file. This will cause issues <strong>unless</strong> you use the -S option shown below.</p>
+</div>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-1<span class="w"> </span>folder1/reads_1.fq<span class="w"> </span>folder2/reads_1.fq<span class="w"> </span>-2<span class="w"> </span>folder1/reads_2.fq<span class="w"> </span>folder2/reads_2.fq<span class="w"> </span>-S<span class="w"> </span>sample1<span class="w"> </span>sample2
+ls<span class="w"> </span>sample1.paired.sylsp<span class="w"> </span>sample2.paired.sylsp
+</code></pre></div>
+<ul>
+<li><code>-S</code>: renames the output sketch to <code>sample{x}.paired.sylsp</code>. </li>
+<li><code>--lS</code>: input a newline delimited list of sample names</li>
+</ul>
+<h4 id="sketching-single-end-reads">Sketching single-end reads</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-r<span class="w"> </span>reads1.fq<span class="w"> </span>reads2.fa
+sylph<span class="w"> </span>sketch<span class="w"> </span>reads1.fq<span class="w"> </span>
+
+<span class="c1"># DON&#39;T DO: sylph sketch reads.fa</span>
+</code></pre></div>
+<ul>
+<li><code>-r</code>: you can sketch many single-end reads at once. </li>
+<li>If  <code>-r</code> is not specified, fastq files are assumed to be reads. If fasta reads, <em>you must use -r</em>.</li>
+</ul>
+<h2 id="database-sketching-options">Database sketching options</h2>
+<p>You can create a custom database with sylph. This requires only fasta files. </p>
+<h4 id="creating-a-database-of-fasta-files">Creating a database of fasta files</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>genomes/*.fa.gz<span class="w"> </span>-o<span class="w"> </span>database<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span><span class="w"> </span>-c<span class="w"> </span><span class="m">200</span>
+<span class="c1"># EQUIVALENT</span>
+sylph<span class="w"> </span>sketch<span class="w"> </span>-g<span class="w"> </span>genomes/*.fa.gz<span class="w"> </span>-o<span class="w"> </span>database<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span>
+</code></pre></div>
+<ul>
+<li>fasta files are assumed to be genomes. All genomes are combined into a new file called <code>database.syldb</code>. </li>
+<li><code>-t</code>: sketching can use many threads</li>
+<li><code>-c</code>: the <strong>compression</strong> parameter. Memory/runtime scale like <code>1/c</code>; higher <code>c</code> is faster but less sensitive at low coverage.</li>
+<li>Default <code>c = 200</code>. The <code>-c</code> for genomes must be than &gt;= the <code>-c</code> for reads (strict &gt; is allowed) </li>
+</ul>
+<h4 id="custom-databases-to-dereplicate-or-not">Custom databases: to dereplicate or not?</h4>
+<p>We recommend <strong>dereplicating your database of genomes at the species level (95% ANI)</strong>. </p>
+<p>Sylph handles similar genomes within your database by reassigning k-mers (see Fig. 1 in the paper) to a "best" genome. This works well when the genomes are &lt; 95% ANI to each other. HOWEVER, this is less reliable when the genomes are very similar. </p>
+<p>When k-mer reassignment fails, a single strain can appear as two (or more) similar strains being present --- your abundances will be skewed because the species appear twice as abundant.</p>
+<p>Thus, dereplication prevents overestimation of abundances.</p>
+<h4 id="creating-a-database-of-contigs-or-if-genomes-are-all-in-one-fasta-file">Creating a database of contigs or if genomes are all in one fasta file</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>all_genomes.fa<span class="w"> </span>-i<span class="w"> </span>-o<span class="w"> </span>contig_database
+</code></pre></div>
+<ul>
+<li><code>-i</code> considers every record in a fasta (i.e. contig) as a genome</li>
+<li>This is single-threaded currently, so a bit slower</li>
+</ul>
+<h4 id="sketching-a-large-database">Sketching a large database</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-l<span class="w"> </span>genome_list.txt<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span>
+</code></pre></div>
+<ul>
+<li><code>-l</code> is a newline delimited text file, with each genome on a separate line. </li>
+</ul>
+<h2 id="profiling-and-querying">Profiling and querying</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Most of the time, you should use <code>sylph profile</code> instead of <code>sylph query</code>. See <a href="../5%E2%80%90minute-sylph-tutorial/">the tutorial</a> for how <code>profile</code> and <code>query</code> differ. </p>
+</div>
+<h4 id="standard-profiling-and-querying">Standard profiling and querying</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w"> </span>*.syldb<span class="w"> </span>*.sylsp<span class="w">  </span>-t<span class="w"> </span><span class="m">50</span><span class="w"> </span>-o<span class="w"> </span>results.tsv
+<span class="c1"># sylph query *.syldb *.sylsp  -t 50 -o results.tsv</span>
+</code></pre></div>
+<ul>
+<li><code>*.syldb</code>: all syldb files (generated by sketching genomes) are aggregated together into one large database. </li>
+<li><code>*.sylsp</code>: each sylsp file (generated by sketching reads) is queried/profiled against the combined database.</li>
+<li><code>-t</code>: 50 threads used. Even single-sample vs single-database is multi-threaded. </li>
+<li><code>-o</code>: output results to a file. Can also redirect using <code>&gt;</code> instead of <code>-o</code>. </li>
+</ul>
+<h4 id="lazy-profiling-and-querying-without-sketching">Lazy profiling and querying without sketching</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># raw genomes</span>
+sylph<span class="w"> </span>profile<span class="w"> </span>genome1.fa<span class="w"> </span>genome2.fa<span class="w"> </span>sample.sylsp
+
+<span class="c1"># raw reads</span>
+sylph<span class="w"> </span>profile<span class="w"> </span>database.syldb<span class="w"> </span>raw_reads.fq<span class="w"> </span>
+
+<span class="c1"># raw paired-end reads (since sylph v0.6.0)</span>
+sylph<span class="w"> </span>profile<span class="w"> </span>database.syldb<span class="w"> </span>-1<span class="w"> </span>*_1.fq.gz<span class="w"> </span>-2<span class="w"> </span>*_2.fq.gz
+</code></pre></div>
+<ul>
+<li>If you input fastas and fastqs into profile/query, sylph will sketch them and then use them. </li>
+<li>Parameters can be set in the <code>sylph profile</code> command for sketching. We recommend using <code>sylph sketch</code> instead, though, as there are more options.</li>
+<li>If you have <em>FASTA</em> single-ended sequences (not FASTQ), lazy profiling will not work. You must use <code>sylph sketch -r my_fasta_reads.fa</code> instead.</li>
+</ul>
+<h4 id="profiling-small-genomes-such-as-viruses">Profiling small genomes such as viruses</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-c<span class="w"> </span><span class="m">100</span><span class="w"> </span>virus_genomes.fa<span class="w"> </span>-i<span class="w"> </span>-o<span class="w"> </span>viruses
+sylph<span class="w"> </span>sketch<span class="w"> </span>-c<span class="w"> </span><span class="m">200</span><span class="w"> </span>prokaryotic_genomes/*<span class="w"> </span>-o<span class="w"> </span>proks<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span>
+sylph<span class="w"> </span>sketch<span class="w"> </span>-c<span class="w"> </span><span class="m">100</span><span class="w"> </span>read.fq<span class="w"> </span>
+sylph<span class="w"> </span>profile<span class="w"> </span>*.syldb<span class="w">  </span>*.sylsp<span class="w"> </span>-t<span class="w"> </span><span class="m">50</span><span class="w"> </span>--min-number-kmers<span class="w"> </span><span class="m">20</span><span class="w"> </span>-o<span class="w"> </span>results.tsv
+</code></pre></div>
+<p>Notes:</p>
+<ul>
+<li>Sketch viruses at <code>-c 100</code>, reads at <code>-c 100</code>, but genomes at <code>-c 200</code>. sylph actually runs without issues if the -c for all genomes is &gt;= the -c for reads, which is a useful technique. </li>
+<li>Sketching smaller genomes with smaller <code>-c</code> is preferable. </li>
+<li>Be sure to set <code>--min-num-kmers</code> to smaller than default (50) if you care about outputting results for small genomes. </li>
+</ul>
+<h4 id="estimating-percentage-of-unknown-reads-in-database">Estimating percentage of unknown reads in database</h4>
+<p>Sylph can estimate the percentage of your reads that are present at the species level using the <code>-u</code> or <code>---estimate-unknown</code> option. Sylph does not classify reads directly but estimates this percentage from the lengths and coverages of detected genomes.  </p>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w"> </span>-u<span class="w"> </span>database.syldb<span class="w"> </span>sample.sylsp<span class="w"> </span>-o<span class="w"> </span>results_with_unknown.tsv
+
+<span class="c1"># input read identities. see below for information on the --read-seq-id parameter. </span>
+sylph<span class="w"> </span>profile<span class="w"> </span>-u<span class="w"> </span>--read-seq-id<span class="w"> </span><span class="m">99</span>.5<span class="w"> </span>database.syldb<span class="w"> </span>sample.sylsp<span class="w"> </span>-o<span class="w"> </span>results_with_unknown.tsv
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol>
+<li>The <code>-u</code> option multiplies the <code>Sequence_abundance</code> column by the percent of classified reads.  </li>
+<li>The sum of <code>Sequence_abundance</code> column is the percentage of classified reads. </li>
+<li><code>-u</code> does <em>not</em> change the <code>Taxonomic_abundance</code> column. <a href="https://github.com/bluenote-1577/sylph/issues/49">See here</a> for an explanation on why we do not modify taxonomic abundance.  </li>
+<li><code>-u</code> changes the <code>Eff_cov</code> column to <code>True_cov</code>. <code>-u</code> estimates the true coverage, not the effective coverage (which is influenced by read length and error rate).</li>
+</ol>
+</div>
+<h4 id="important-notes-for-estimating-unknown-percentage">Important notes for estimating unknown percentage</h4>
+<p><code>-u</code> needs the percent identity of your sequences (i.e. 100 - error percent). </p>
+<ul>
+<li>
+<p>You can supply a <code>--read-seq-id</code>, e.g. 99.5 works fine for Illumina reads. </p>
+</li>
+<li>
+<p>If you do not provide <code>--read-seq-id</code>, <code>-u</code> will estimate sequence identity. 
+This estimate works well for metagenomes that are (1) not too complex, e.g. host-associated metagenomes, and (2) &gt; 1GB sequencing depth. </p>
+</li>
+</ul>
+<p>For Soil/Ocean, i.e. complex metagenomes, and low sequencing depth this estimate does not work well. You could set <code>--read-seq-id</code> to something like 99.5 instead. For short reads, sylph v0.6 automatically sets <code>--read-seq-id</code> to 99.5 if median k-mer depth is &lt; 3. </p>
+<h4 id="estimating-coverage-for-small-contigs">Estimating coverage for small contigs</h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We have developed a new method called <a href="https://github.com/bluenote-1577/fairy">fairy</a> for calculating contig coverages quickly. Consider using fairy instead of sylph for this task, especially if you want to bin contigs. </p>
+</div>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>sketch<span class="w"> </span>-i<span class="w"> </span>contigs.fa<span class="w"> </span>-o<span class="w"> </span>contigs<span class="w"> </span>-1<span class="w"> </span>reads_1.fq<span class="w"> </span>-2<span class="w"> </span>reads_2.fq
+sylph<span class="w"> </span>profile<span class="w"> </span>contigs.syldb<span class="w"> </span>reads_1.paired.fq.sylsp<span class="w"> </span>-u<span class="w"> </span>--min-number-kmers<span class="w"> </span><span class="m">10</span><span class="w"> </span>--read-len<span class="w"> </span><span class="m">150</span><span class="w"> </span>-o<span class="w"> </span>results.tsv<span class="w"> </span>
+</code></pre></div>
+<h2 id="taxonomy-integration-with-sylph-tax">Taxonomy integration with sylph-tax</h2>
+<p>See <a href="../sylph-tax/">the documentation on taxonomy integration with sylph-tax</a> for installation and thorough documentation. </p>
+<h4 id="standard-taxonomic-integration-one-metagenome-one-database">Standard taxonomic integration (one metagenome, one database)</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w"> </span>gtdb-r220-c200-dbv1.syldb<span class="w"> </span>-1<span class="w"> </span>read_name1.fq<span class="w"> </span>-2<span class="w"> </span>read_name2.fq<span class="w"> </span>-o<span class="w"> </span>result.tsv
+sylph-tax<span class="w"> </span>taxprof<span class="w"> </span>result.tsv<span class="w"> </span>-t<span class="w"> </span>GTDB_r220<span class="w"> </span>-o<span class="w"> </span>PREFIX_
+
+<span class="c1">### new file will be called PREFIX_read_name1.fq.sylphmpa</span>
+head<span class="w"> </span>PREFIX_read_name1.fq.sylphmpa
+</code></pre></div>
+<ul>
+<li><code>sylph-tax taxprof</code> takes sylph's result and a taxonomy (<code>-t</code>) and outputs <code>.sylphmpa</code> files with prefix (<code>-o</code>)</li>
+<li><code>GTDB_r220</code> database is used, so we use <code>GTDB_r220</code> as the metadata file. See <code>sylph-tax taxprof -h</code> for available databases. </li>
+<li>When using paired-end reads, the "sample name" is the first read (<code>read_name1.fq</code>). For single-end reads, it is just the read name. </li>
+</ul>
+<h4 id="taxonomic-integration-more-than-1-metagenome-more-than-1-database">Taxonomic integration: more than 1 metagenome, more than 1 database</h4>
+<div class="highlight"><pre><span></span><code>sylph<span class="w"> </span>profile<span class="w">  </span>gtdb-r220-c200-dbv1.syldb<span class="se">\</span>
+<span class="w">               </span>fungi-refseq-2024-07-25-c200-v0.3.syldb<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>-1<span class="w"> </span>A1.fq<span class="w"> </span>B1.fq<span class="w"> </span>-2<span class="w"> </span>A2.fq<span class="w"> </span>B2.fq<span class="w"> </span>-o<span class="w"> </span>result.tsv
+sylph-tax<span class="w"> </span>taxprof<span class="w"> </span>result.tsv<span class="w"> </span>-t<span class="w"> </span>GTDB_r220<span class="w"> </span>FungiRefSeq-2024-07-25
+
+<span class="c1"># multiple .sylphmpa files are output</span>
+head<span class="w"> </span>A1.fq.sylphmpa
+head<span class="w"> </span>B1.fq.sylphmpa
+</code></pre></div>
+<ul>
+<li><code>-t</code> can take multiple taxonomies. This is needed because <code>gtdb-r220...</code> and <code>fungi-refseq...</code> are both used (these databases are concatenated by sylph into a big database for profiling). </li>
+<li><code>sylph-tax taxprof</code> works on multiple samples at once. Both <code>A1.fq.sylphmpa</code> and <code>B1.fq.sylphmpa</code> are output. </li>
+</ul>
+<h4 id="custom-taxonomies-for-custom-databases">Custom taxonomies for custom databases?</h4>
+<p>See <a href="../sylph-tax-custom-taxonomies/">this page for more information about building custom taxonomies for sylph-tax</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

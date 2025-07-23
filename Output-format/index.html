@@ -1,0 +1,821 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sylph-docs.github.io/Output-format/">
+      
+      
+        <link rel="prev" href="../sylph-cookbook/">
+      
+      
+        <link rel="next" href="../5%E2%80%90minute-sylph-tutorial/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Output format - Documentation for sylph - ultrafast, precise metagenomic profiling</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tsv-output" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-header__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation for sylph - ultrafast, precise metagenomic profiling
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Output format
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation for sylph - ultrafast, precise metagenomic profiling" class="md-nav__button md-logo" aria-label="Documentation for sylph - ultrafast, precise metagenomic profiling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation for sylph - ultrafast, precise metagenomic profiling
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-can-cannot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What sylph can and cannot do
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install%2Bquickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre%E2%80%90built-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-built databases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Output format
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Output format
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tsv-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      TSV Output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-get-a-taxonomic-profile-like-metaphlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I get a taxonomic profile like MetaPhlAn?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-on-containment-ani" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note on containment ANI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5%E2%80%90minute-sylph-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 1 - 5 minute introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomic-profiling-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - taxonomic profiling with GTDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Taxonomy integration (sylph-tax)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Taxonomy integration (sylph-tax)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sylph-tax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install + Quick start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Subcommand information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-output-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    .sylphmpa output format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sylph-tax-custom-taxonomies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom taxonomies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tsv-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      TSV Output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-get-a-taxonomic-profile-like-metaphlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I get a taxonomic profile like MetaPhlAn?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-on-containment-ani" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note on containment ANI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Output format</h1>
+
+<h2 id="tsv-output">TSV Output</h2>
+<p>Sylph outputs a TSV (tab-separated values) file. Each row is one genome detected in the metagenome sample. </p>
+<div class="highlight"><pre><span></span><code>Sample_file<span class="w">   </span>Genome_file<span class="w">   </span>Taxonomic_abundance<span class="w">   </span>Sequence_abundance<span class="w">   </span>Adjusted_ANI<span class="w">   </span>Eff_cov<span class="w">   </span>ANI_5-95_percentile<span class="w">   </span>Eff_lambda<span class="w">   </span>Lambda_5-95_percentile<span class="w">   </span>Median_cov<span class="w">   </span>Mean_cov_geq1<span class="w">   </span>Containment_ind<span class="w">   </span>Naive_ANI<span class="w">   </span>Contig_name
+reads.fq<span class="w">   </span>genome.fa<span class="w">   </span><span class="m">78</span>.1242<span class="w">   </span><span class="m">81</span>.8234<span class="w">   </span><span class="m">97</span>.53<span class="w">   </span><span class="m">264</span>.000<span class="w">   </span>NA-NA<span class="w">   </span>HIGH<span class="w">   </span>NA-NA<span class="w">   </span><span class="m">264</span><span class="w">   </span><span class="m">264</span>.143<span class="w">   </span><span class="m">10281</span>/22299<span class="w">   </span><span class="m">97</span>.53<span class="w">   </span>NC_016901.1<span class="w"> </span>Shewanella<span class="w"> </span>baltica<span class="w"> </span>OS678,<span class="w"> </span><span class="nb">complete</span><span class="w"> </span>genome
+</code></pre></div>
+<ul>
+<li><strong>Sample_file</strong>: the filename of the reads/sample.</li>
+<li><strong>Genome_file</strong>: the filename of the detected genome.</li>
+<li><strong>Taxonomic_abundance</strong>: normalized taxonomic abundance as a percentage. Coverage-normalized - same as MetaPhlAn abundance<ul>
+<li><em>Not present for <code>sylph query</code></em></li>
+</ul>
+</li>
+<li><strong>Sequence_abundance</strong>: normalized sequence abundance as a percentage. The "percentage of reads" assigned to each genome - same as Kraken abundance<ul>
+<li><em>Not present for <code>sylph query</code></em></li>
+</ul>
+</li>
+<li><strong>Adjusted_ANI</strong>: adjusted containment ANI estimate.<ul>
+<li>If coverage adjustment is possible (cov is &lt; 3x cov): returns coverage-adjusted ANI</li>
+<li>If coverage is too low/high: returns Naive_ANI (see below)</li>
+</ul>
+</li>
+<li><strong>Eff_cov/True_cov</strong>: an estimate of the effective coverage (Eff_cov). If <code>-u</code> specified, the true coverage (True_cov). <strong>Always a decimal number.</strong> <ul>
+<li>"Effective" coverage is a k-mer based estimate of the sequencing depth-of-coverage. It slightly underestimates the true sequencing depth. See the paper for more information. </li>
+</ul>
+</li>
+<li><strong>ANI_5-95_percentile</strong>: [5%,95%] confidence intervals. <strong>Not always a decimal number</strong>.<ul>
+<li>If coverage adjustment is possible: <code>float-float</code> e.g. <code>98.52-99.55</code></li>
+<li>If coverage is too low/high: <code>NA-NA</code> is given. </li>
+</ul>
+</li>
+<li><strong>Eff_lambda</strong>: estimate of the effective coverage parameter. <strong>Not always a decimal number</strong>. <ul>
+<li>If coverage adjustment is possible: lambda estimate is given</li>
+<li>If coverage is too low/high: <code>LOW</code> or <code>HIGH</code> is output</li>
+</ul>
+</li>
+<li><strong>Lambda_5-95_percentile:</strong> [5%, 95%] confidence intervals for lambda. Same format rules as ANI_5-95_percentile.</li>
+<li><strong>Median_cov</strong>: median k-mer multiplicity for k-mers with &gt;= 1 multiplicity.</li>
+<li><strong>Mean_cov_geq1</strong>: mean k-mer multiplicity for k-mers with &gt;= 1 multiplicity.</li>
+<li><strong>Containment_ind</strong>: <code>int/int</code> showing the containment index (number of k-mers found in sample divided by total k-mers), e.g. <code>959/1053</code>.</li>
+<li><strong>Naive_ANI</strong>: containment ANI without coverage adjustment.</li>
+<li><strong>kmers_reassigned</strong>: the number of k-mers reassigned away from the genome. <ul>
+<li><em>Not present for <code>sylph query</code></em></li>
+</ul>
+</li>
+<li><strong>Contig_name</strong>: name of the first contig in the genome (or just the contig name for the -i option).</li>
+</ul>
+<h2 id="how-do-i-get-a-taxonomic-profile-like-metaphlan">How do I get a taxonomic profile like MetaPhlAn?</h2>
+<p>See the <a href="../sylph-tax/">manual outlined here</a>.</p>
+<h2 id="note-on-containment-ani">Note on containment ANI</h2>
+<p>In sylph, ANI implicitly means <strong>containment ANI</strong> between a genome and a metagenome. </p>
+<p>Containment ANI is calculated from the number of k-mers in a reference genome contained in a metagenome. </p>
+<ol>
+<li>If the "metagenome" is a <em>single genome</em>, the containment ANI approximates the standard ANI. </li>
+<li>If the "metagenome" is a <em>collection of genomes</em>, the containment ANI can be interpreted as a "nearest neighbour ANI". </li>
+<li><strong>(profiling)</strong>: If the metagenome is <em>reads from a collection of genomes</em>, sylph estimates an adjusted (containment) ANI that is the same as case 2 <em>with a statistical model</em>. </li>
+</ol>
+<p>Note: containment ANI slightly overestimates the true ANI. See Supplementary Figures in our paper. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
