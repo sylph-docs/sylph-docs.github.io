@@ -38,7 +38,7 @@ Most the databases have associated taxonomies that sylph can utilize. See [here 
 | **Viral** | UHGV | 171,338 gut vOTUs | -c 100 | 0.4 GB | [uhgv_c100_dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/uhgv_c100_dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/uhgv_c100_dbv1.syldb) | |
 | | UHGV | 171,338 gut vOTUs | -c 200 | 0.2 GB | [uhgv_c200_dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/uhgv_c200_dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/uhgv_c200_dbv1.syldb) | |
 | | IMG/VR4.1 | 2,917,516 viral genomes | -c 200 | 2 GB | [imgvr_c200_v0.3.0.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/imgvr_c200_v0.3.0.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/imgvr_c200_v0.3.0.syldb) | |
-| **Eukaryotic** | RefSeq Fungi | 595 genomes | -c 200 | 700 MB | [fungi-refseq-2024-07-25-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/fungi-refseq-2024-07-25-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/fungi-refseq-2024-07-25-c200-v0.3.syldb) | |
+| **Eukaryotic** | RefSeq Fungi - latest | 661 genomes | -c 200 | 750 MB | [fungi-refseq-2025-10-11-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/fungi-refseq-2025-10-11-c200-dbv1.syldb ) | [mirror](https://storage.googleapis.com/sylph-stuff/fungi-refseq-2025-10-11-c200-dbv1.syldb ) | |
 | | TARA Oceans | 713 eukaryotic MAGs/SAGs | -c 200 | 900 MB | [tara-eukmags-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/tara-eukmags-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/tara-eukmags-c200-v0.3.syldb) | |
 
 ## Parameter Guide
