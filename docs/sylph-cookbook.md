@@ -15,6 +15,7 @@
       - [Profiling small genomes such as viruses](#profiling-small-genomes-such-as-viruses)
       - [Estimating percentage of unknown reads](#estimating-percentage-of-unknown-reads-in-database)
       - [Important notes for estimating unknown percentage](#important-notes-for-estimating-unknown-percentage)
+      - [Estimating read counts instead of abundances](#estimating-read-counts-instead-of-abundances)
   * [Taxonomy integration with sylph-tax](#taxonomy-integration-with-sylph-tax)
       - [Standard taxonomic integration (one metagenome, one database)](#standard-taxonomic-integration-one-metagenome-one-database)
       - [Taxonomic integration: more than 1 metagenome, more than 1 database](#taxonomic-integration-more-than-1-metagenome-more-than-1-database)
@@ -184,16 +185,27 @@ This estimate works well for metagenomes that are (1) not too complex, e.g. host
 
 For Soil/Ocean, i.e. complex metagenomes, and low sequencing depth this estimate does not work well. You could set `--read-seq-id` to something like 99.5 instead. For short reads, sylph v0.6 automatically sets `--read-seq-id` to 99.5 if median k-mer depth is < 3. 
 
+#### Estimating read counts instead of abundances
+
+In sylph v0.9.0, we added the `--estimate-read-counts` option. 
+
+- This is done by the formula: `estimated reads = depth * genome size / average read length`
+- `depth` is estimated by turning on `-u`, estimating unknown abundance. See above for caveats for estimating `-u`. 
+
+```sh
+sylph profile --estimate-read-counts database.syldb sample.sylsp -o results.tsv
+
+### Sequence abundances are read COUNTS, not %s:
+### ... Sequence_abundance ...
+### ... 3827.0000 ....
+```
+
 #### Estimating coverage for small contigs
 
 !!! TIP
 
     We have developed a new method called [fairy](https://github.com/bluenote-1577/fairy) for calculating contig coverages quickly. Consider using fairy instead of sylph for this task, especially if you want to bin contigs. 
 
-```sh
-sylph sketch -i contigs.fa -o contigs -1 reads_1.fq -2 reads_2.fq
-sylph profile contigs.syldb reads_1.paired.fq.sylsp -u --min-number-kmers 10 --read-len 150 -o results.tsv 
-```
 
 ## Taxonomy integration with sylph-tax
 
