@@ -13,13 +13,13 @@ Note: do not add the `t__STRAIN` line.
 
 ### Custom taxonomy example usage case
 
-You obtained two new MAGs: `genome1.fa` and `genome2.fa` and you ran GTDB-tk to get their taxonomic annotation. You want to to profile against the new MAGs and the GTDB database.
+You obtained two new MAGs: `genome1.fa` and `genome2.fa.gz` and you ran GTDB-tk to get their taxonomic annotation. You want to to profile against the new MAGs and the GTDB database.
 
 1. Create a file called `taxonomy.tsv` as follows:
 
     ```
     genome1.fa d__Archaea;(...);s__My new species name`
-    genome2.fa d__Bacteria;(...);g__My genus name;s__My species name2`
+    genome2.fa.gz d__Bacteria;(...);g__My genus name;s__My species name2`
     ```
 
 2. Use `taxonomy.tsv` as an argument to `sylph-tax taxprof`.
@@ -36,14 +36,13 @@ You obtained two new MAGs: `genome1.fa` and `genome2.fa` and you ran GTDB-tk to 
 
     The parsing of the taxonomic metadata file is done in the script https://github.com/bluenote-1577/sylph-tax/blob/main/sylph_tax/sylph_to_taxprof.py. Refer to this reference implementation if needed. 
 
-
 !!! warning
 
-    For Genbank/RefSeq genomes, filenames have to be dealt with carefully.
+    Before v1.7.0 of `sylph-tax`, for Genbank/RefSeq genomes, filenames had to be dealt with carefully.
 
     - If `_genomic` or `_ASM` is in your genome file name, use the part before `_genomic` or `_ASM`.
 
-    So for `GCF_002863645.1_ASM286364v1_genomic.fna.gz`, use `GCF_002863645.1` in column 1. 
+    So for `GCF_002863645.1_ASM286364v1_genomic.fna.gz`, use `GCF_002863645.1` in column 1. This is no longer needed since `v.1.7.0`.
 
 ## Creating taxonomy metadata from RefSeq?
 
