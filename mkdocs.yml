@@ -11,8 +11,8 @@ nav:
   - Cookbook: sylph-cookbook.md
   - Output format: Output-format.md
   - Tutorials: 
-    - Tutorial 1 - 5 minute introduction: 5‐minute-sylph-tutorial.md
-    - Tutorial 2 - taxonomic profiling with GTDB: taxonomic-profiling-tutorial.md
+    - Tutorial - taxonomic profiling with GTDB: taxonomic-profiling-tutorial.md
+    - Extra Tutorial - ANI, querying, and profiling: 5‐minute-sylph-tutorial.md
   - Taxonomy integration (sylph-tax): 
     - Sylph-tax: sylph-tax.md
     - Install + Quick start: sylph-tax-quick-start.md

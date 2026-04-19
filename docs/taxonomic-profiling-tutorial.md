@@ -1,7 +1,7 @@
 In this tutorial, we will use sylph to do
 
 1. Multi-sample prokaryotic metagenomic profiling with the GTDB-R214 database 
-2. output a taxonomic output like MetaPhlAn or Kraken2. 
+2. Output a taxonomic output like MetaPhlAn or Kraken2. 
 
 Please [ensure that sylph is installed](install+quickstart.md).
 
@@ -11,7 +11,7 @@ Please [ensure that sylph is installed](install+quickstart.md).
 
 !!! note  
 
-    This tutorial uses the GTDB-R214 database, an older database. A new GTDB version (R220) has 35% more genomes. Feel
+    This tutorial uses the GTDB-R214 database, an older database. New GTDB versions are available and have more genomes. Feel
     free to swap out GTDB-r214 for another GTDB version.
 
 ### Option 1. Download pre-sketched database
@@ -19,11 +19,11 @@ Please [ensure that sylph is installed](install+quickstart.md).
 Download the pre-sketched (i.e., indexed) GTDB-R214 database [provided here](pre‐built-databases.md). For example,
 
 ```sh
-wget https://storage.googleapis.com/sylph-stuff/v0.3-c1000-gtdb-r214.syldb -O gtdb_database.syldb
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c200-gtdb-r214.syldb
 
-# OR
+# or use compact database 
 
-#wget https://storage.googleapis.com/sylph-stuff/v0.3-c200-gtdb-r214.syldb -O gtdb_database.syldb
+#wget http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c1000-gtdb-r214.syldb
 
 ``` 
 
@@ -69,7 +69,7 @@ This outputs two files called `mouse_1.fq.gz.paired.sylsp` and `B-mouse_1.fq.gz.
 To multi-sample profile with sylph, run the following:
 
 ```sh
-sylph profile gtdb_database.syldb *mouse_1.fq.gz.paired.sylsp  -t 10 -o results.tsv
+sylph profile v0.3-c200-gtdb-r214.syldb *mouse_1.fq.gz.paired.sylsp  -t 10 -o results.tsv
 ```
 
 This uses 10 threads to profile the metagenome against our database into a file called `results.tsv`. 
@@ -115,17 +115,17 @@ sylph-tax download --download-to taxonomy_file_folder
 sylph-tax taxprof results.tsv -t GTDB_r214 -o prefix_
 
 ls prefix_mouse_1.fq.gz.sylphmpa
-ls prefix_B-mouse_2.fq.gz.sylphmpa
+ls prefix_B-mouse_1.fq.gz.sylphmpa
 ```
 
 !!! important
 
-    `-t`'s metadata file must correspond to database used. See [sylph-tax](https://github.com/bluenote-1577/sylph-tax) for available database. If you use GTDB-R220 or R214, you must use the **correct** R220 or R214 taxonomy. 
+    `-t`'s metadata file must correspond to database used. See [sylph-tax](https://github.com/bluenote-1577/sylph-tax) for available databases. If you use e.g., GTDB-R220 or R214, you must use the **correct** R220 or R214 taxonomy. 
 
 The script outputs a new file called `prefix_MYSAMPLENAME.sylphmpa` for each sample in the results file. Investigating one file gives the following:
 
 ```
-head -n 20 prefix_mouse_1.fq.sylphmpa                                                                                       
+head -n 20 prefix_mouse_1.fq.gz.sylphmpa                                                                                       
 #SampleID	mouse_1.fq
 clade_name	relative_abundance	sequence_abundance	ANI (if strain-level)
 d__Bacteria	100.00010000000002	99.99999999999999	NA
@@ -147,7 +147,6 @@ d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g_
 d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__1XD42-69|s__1XD42-69	4.1703	4.1626	NA
 d__Bacteria|p__Bacillota_A|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__1XD42-69|s__1XD42-69|t__GCA_910589105.1	4.1703	4.1626	97.47
 ```
-
 This file is a taxonomic profile similar to what MetaPhlAn outputs. Each taxonomic rank has an associated taxonomic or sequence abundance. 
 
 !!! note

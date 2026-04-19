@@ -13,7 +13,7 @@ Note: do not add the `t__STRAIN` line.
 
 ### Custom taxonomy example usage case
 
-You obtained two new MAGs: `genome1.fa` and `genome2.fa.gz` and you ran GTDB-tk to get their taxonomic annotation. You want to to profile against the new MAGs and the GTDB database.
+You obtained two new MAGs: `genome1.fa` and `genome2.fa.gz` and you ran GTDB-tk to get their taxonomic annotation. You want to profile against the new MAGs and the GTDB database.
 
 1. Create a file called `taxonomy.tsv` as follows:
 
@@ -42,7 +42,7 @@ You obtained two new MAGs: `genome1.fa` and `genome2.fa.gz` and you ran GTDB-tk 
 
     - If `_genomic` or `_ASM` is in your genome file name, use the part before `_genomic` or `_ASM`.
 
-    So for `GCF_002863645.1_ASM286364v1_genomic.fna.gz`, use `GCF_002863645.1` in column 1. This is no longer needed since `v.1.7.0`.
+    So for `GCF_002863645.1_ASM286364v1_genomic.fna.gz`, use `GCF_002863645.1` in column 1. This is no longer needed since `v1.7.0`.
 
 ## Creating taxonomy metadata from RefSeq?
 

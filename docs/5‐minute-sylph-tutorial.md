@@ -93,4 +93,4 @@ There is only 1 genome in the sample, so it has 100% abundance.
 
 ### Real profiling against a database
 
-See the [tutorial here](taxonomic-profiling-tutorial.md) to learn how to profile against the GTDB database, an actual database of > 50,000 genomes prokaryotic genomes. 
+See the [tutorial here](taxonomic-profiling-tutorial.md) to learn how to profile against the GTDB database, an actual database of > 100,000 prokaryotic genomes. 

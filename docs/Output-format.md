@@ -14,7 +14,7 @@ reads.fq   genome.fa   78.1242   81.8234   97.53   264.000   NA-NA   HIGH   NA-N
 - **Sequence_abundance**: normalized sequence abundance as a percentage. The "percentage of reads" assigned to each genome - same as Kraken abundance
      * *Not present for `sylph query`*
 - **Adjusted_ANI**: adjusted containment ANI estimate.
-    * If coverage adjustment is possible (cov is < 3x cov): returns coverage-adjusted ANI
+    * If coverage adjustment is possible (cov is < 3x): returns coverage-adjusted ANI
     * If coverage is too low/high: returns Naive_ANI (see below)
 - **Eff_cov/True_cov**: an estimate of the effective coverage (Eff_cov). If `-u` specified, the true coverage (True_cov). **Always a decimal number.** 
     * "Effective" coverage is a k-mer based estimate of the sequencing depth-of-coverage. It slightly underestimates the true sequencing depth. See the paper for more information. 

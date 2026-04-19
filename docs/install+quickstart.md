@@ -1,20 +1,22 @@
 ## Very quick start
 
-### Profile metagenome sample against [GTDB-R220](https://gtdb.ecogenomic.org/) (113,104 bacterial/archaeal species) 
+### Profile metagenome against a [GTDB database](https://gtdb.ecogenomic.org/) with > 100,000 species
+
+!!! note
+    See the [prebuilt databases](pre‐built-databases.md) for available versions of GTDB.
 
 ```sh
 conda install -c bioconda sylph
 
-# download GTDB-R220 pre-built database (~13 GB)
-wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+# download GTDB pre-built database (~18 GB)
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv1.syldb
 
 # multi-sample paired-end profiling (sylph version >= 0.6)
-sylph profile gtdb-r220-c200-dbv1.syldb -1 *_1.fastq.gz -2 *_2.fastq.gz -t (threads) > profiling.tsv
+sylph profile gtdb-r226-c200-dbv1.syldb -1 *_1.fastq.gz -2 *_2.fastq.gz -t (threads) > profiling.tsv
 
 # multi-sample single-end profiling
-sylph profile gtdb-r220-c200-dbv1.syldb *.fastq -t (threads) > profiling.tsv
+sylph profile gtdb-r226-c200-dbv1.syldb *.fastq -t (threads) > profiling.tsv
 ```
-
 
 ## Install options
 

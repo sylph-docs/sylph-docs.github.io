@@ -23,7 +23,7 @@
 
 ## Read sketching options
 
-"Sketching" is equivalently to "indexing". Sketching reads gives you a small index that you can efficiently reuse. 
+"Sketching" is equivalent to "indexing". Sketching reads gives you a small index that you can efficiently reuse. 
 
 #### Sketching many paired-end reads
 
@@ -153,11 +153,11 @@ Notes:
 
 - Sketch viruses at `-c 100`, reads at `-c 100`, but genomes at `-c 200`. sylph actually runs without issues if the -c for all genomes is >= the -c for reads, which is a useful technique. 
 - Sketching smaller genomes with smaller `-c` is preferable. 
-- Be sure to set `--min-num-kmers` to smaller than default (50) if you care about outputting results for small genomes. 
+- Be sure to set `--min-number-kmers` to smaller than default (50) if you care about outputting results for small genomes. 
 
 #### Estimating percentage of unknown reads in database
 
-Sylph can estimate the percentage of your reads that are present at the species level using the `-u` or `---estimate-unknown` option. Sylph does not classify reads directly but estimates this percentage from the lengths and coverages of detected genomes.  
+Sylph can estimate the percentage of your reads that are present at the species level using the `-u` or `--estimate-unknown` option. Sylph does not classify reads directly but estimates this percentage from the lengths and coverages of detected genomes.  
 
 ```sh
 sylph profile -u database.syldb sample.sylsp -o results_with_unknown.tsv

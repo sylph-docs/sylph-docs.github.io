@@ -3,7 +3,7 @@
 `*.sylphmpa` files look like this: 
 
 ```
-#SampleID       /home/jshaw/projects/temp/amr/short_reads/SRR14739086_1.fastq.gz        Taxonomies_used:['GTDB_r220']
+#SampleID       SRRXXXX.fastq.gz        Taxonomies_used:['GTDB_r220']
 clade_name      relative_abundance      sequence_abundance      ANI (if strain-level)    Coverage (if strain-level)
 d__Bacteria     100.00010000000003      100.00019999999996      NA      NA
 d__Bacteria|p__Pseudomonadota   100.00010000000003      100.00019999999996      NA      NA
