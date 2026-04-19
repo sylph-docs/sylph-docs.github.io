@@ -10,7 +10,11 @@ See the [sylph-tax install and quick start guide here](sylph-tax-quick-start.md)
 
 ## Taxonomy integration - available databases with taxonomy files
 
-The following [pre-built sylph databases](pre‐built-databases.md) have available taxonomic annotations in the latest version of sylph-tax. Custom taxonomies can also be incorporated.
+The following [pre-built sylph databases](pre‐built-databases.md) have available taxonomic annotations.Custom taxonomies can also be incorporated.
+
+!!! note
+
+    Make sure to update your `sylph-tax` version if a taxonomy below is missing. 
 
 | sylph-tax identifier (used in `taxprof` command)  | Database description                                                                  | Clades     |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------- |
