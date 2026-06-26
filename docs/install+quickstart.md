@@ -1,3 +1,6 @@
+!!! tip
+    Click [here to view an infographic summarizing all of the below information.](../assets/sylph_workflow.html)
+
 ## Very quick start
 
 ### Profile metagenome against a [GTDB database](https://gtdb.ecogenomic.org/) with > 100,000 species

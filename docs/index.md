@@ -13,6 +13,8 @@
    </i>
 </p>
 
+!!! tip
+    Click [here for a quick 1-page guide on how to install and use sylph.](../assets/sylph_workflow.html)
 
 ### Why sylph?
 

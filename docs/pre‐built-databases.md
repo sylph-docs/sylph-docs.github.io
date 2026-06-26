@@ -24,15 +24,17 @@ Most of the databases have associated taxonomies that sylph can utilize. See [he
 
 | Type | Name | Genomes | c-parameter | Size | Primary Download Link | Mirror | Notes |
 |---------------|---------------|---------------|-------------|------|----------------------|--------|-------|
-| **Prokaryotic (GTDB)** | GTDB r232 | 199,923 species | -c 200 | 24.1 GB | [gtdb-r232-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | |
-| | GTDB r232 | 199,923 species | -c 1000 | 4.9 GB | [gtdb-r232-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | |
+| **Prokaryotic (GTDB)** | GTDB r232 (latest) | 199,923 species | -c 200 | 24.1 GB | [gtdb-r232-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | |
+| | GTDB r232 (latest) | 199,923 species | -c 1000 | 4.9 GB | [gtdb-r232-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | |
 | | GTDB r226 | 143,614 species | -c 200 | 18.4 GB | [gtdb-r226-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | |
 | | GTDB r226 | 143,614 species | -c 1000 | 3.7 GB | [gtdb-r226-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c1000-dbv1.syldb) | |
 | | GTDB r220 | 113,104 species | -c 200 | 13.1 GB | [gtdb-r220-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r220-c200-dbv1.syldb) | |
 | | GTDB r220 | 113,104 species | -c 1000 | 2.6 GB | [gtdb-r220-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | |
 | | GTDB r214 | 85,202 species | -c 200 | 10 GB | [v0.3-c200-gtdb-r214.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c200-gtdb-r214.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/v0.3-c200-gtdb-r214.syldb) | |
 | | GTDB r214 | 85,202 species | -c 1000 | 2 GB | [v0.3-c1000-gtdb-r214.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/v0.3-c1000-gtdb-r214.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/v0.3-c1000-gtdb-r214.syldb) | |
-| **Prokaryotic (GlobDB)** | GlobDB r226 | 306,260 species | -c 200 | 32 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
+| **Prokaryotic (GlobDB)** | GlobDB r232 (latest) | 346,233 species | -c 200 | 37.5 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
+| | GlobDB r232 (latest) | 346,233 species | -c 1000 | 7.5 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
+| | GlobDB r226 | 306,260 species | -c 200 | 32 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
 | | GlobDB r226 | 306,260 species | -c 1000 | 6.5 GB | See [the GlobDB website](https://globdb.org/index.php/home) | | Third-party database |
 | **Prokaryotic (Other)** | OceanDNA | 8,466 ocean MAGs | -c 200 | 800 MB | [OceanDNA-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/OceanDNA-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/OceanDNA-c200-v0.3.syldb) | |
 | | SMAG | 21,077 soil MAGs | -c 200 | 2.5 GB | [SMAG-c200-v0.3.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/SMAG-c200-v0.3.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/SMAG-c200-v0.3.syldb) | |
