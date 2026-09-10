@@ -1,4 +1,4 @@
-# sylph - fast and precise species-level metagenomic profiling with ANIs 
+<p align="center"><img src="assets/jay_logo.jpg" width = "500"/></p>
 
 **Sylph** is a program that performs (1) **metagenomic profiling** or (2) **containment average nucleotide identity querying** for metagenomic shotgun sequencing samples. 
 
@@ -14,7 +14,7 @@
 </p>
 
 !!! tip
-    Click [here for a quick 1-page guide on how to install and use sylph.](../assets/sylph_workflow.html)
+    Sylph v1 is released September 2026. Profiling is now much more efficient through the `syl2db` database format. Click [here for a quick 1-page guide on how to install and use sylph.](../assets/sylph_workflow.html)
 
 ### Why sylph?
 

@@ -3,15 +3,16 @@
 Pre-sketched databases available for download below. All databases work from sylph version 0.3.x onwards. 
 
 * Use the **Primary** links hosted at `http://faust.compbio.cs.cmu.edu` if possible. We provide mirrors on google cloud, but this costs us more money.
+* As of sylph v1.0.0, some databases are also available as `.syl2db` (two-stage) files — faster and less memory for large prokaryotic genome collections, almost no differences.
 
 #### Example usage:
 
 ```sh
 # download database
-wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv1.syldb
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv2.syl2db
 
 # profile against database
-sylph profile gtdb-r226-c200-dbv1.syldb -1 sample_R1.fq -2 sample_R2.fq  -t 30 > results.tsv
+sylph profile gtdb-r232-c200-dbv2.syl2db -1 sample_R1.fq -2 sample_R2.fq  -t 30 > results.tsv
 ```
 
 ### Note on taxonomy usage:
@@ -24,9 +25,11 @@ Most of the databases have associated taxonomies that sylph can utilize. See [he
 
 | Type | Name | Genomes | c-parameter | Size | Primary Download Link | Mirror | Notes |
 |---------------|---------------|---------------|-------------|------|----------------------|--------|-------|
-| **Prokaryotic (GTDB)** | GTDB r232 (latest) | 199,923 species | -c 200 | 24.1 GB | [gtdb-r232-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | |
-| | GTDB r232 (latest) | 199,923 species | -c 1000 | 4.9 GB | [gtdb-r232-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | |
-| | GTDB r226 | 143,614 species | -c 200 | 18.4 GB | [gtdb-r226-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | |
+| **Prokaryotic (GTDB)** | GTDB r232 (latest) | 199,923 species | -c 200, two-stage | 19 GB | [gtdb-r232-c200-dbv2.syl2db](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv2.syl2db) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c200-dbv2.syl2db) | `.syl2db`, requires sylph >= v1.0.0 |
+| | GTDB r232  | 199,923 species | -c 200 | 24 GB | [gtdb-r232-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c200-dbv1.syldb) | |
+| | GTDB r232  | 199,923 species | -c 1000 | 4.9 GB | [gtdb-r232-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r232-c1000-dbv1.syldb) | |
+| | GTDB r226 | 143,614 species | -c 200, two-stage | 14 GB | [gtdb-r226-c200-dbv2.syl2db](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv2.syl2db) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c200-dbv2.syl2db) | `.syl2db`, requires sylph >= v1.0.0 |
+| | GTDB r226 | 143,614 species | -c 200 | 18 GB | [gtdb-r226-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c200-dbv1.syldb) | |
 | | GTDB r226 | 143,614 species | -c 1000 | 3.7 GB | [gtdb-r226-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r226-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r226-c1000-dbv1.syldb) | |
 | | GTDB r220 | 113,104 species | -c 200 | 13.1 GB | [gtdb-r220-c200-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r220-c200-dbv1.syldb) | |
 | | GTDB r220 | 113,104 species | -c 1000 | 2.6 GB | [gtdb-r220-c1000-dbv1.syldb](http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | [mirror](https://storage.googleapis.com/sylph-stuff/gtdb-r220-c1000-dbv1.syldb) | |
@@ -49,6 +52,7 @@ Most of the databases have associated taxonomies that sylph can utilize. See [he
 - **-c 200**: More sensitive, larger file size
 - **-c 1000**: More efficient, smaller file size, less sensitive
 - **-c 100**: More sensitive but primarily for smaller genomes. 
+- **`.syl2db` (Preferred)**: New two-stage database format for prokaryotes. Requires sylph >= v1.0.0. Even faster than `-c1000` with the sensitivity of `-c200`. 
 
 !!! note
 
