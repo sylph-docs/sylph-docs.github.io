@@ -2,9 +2,9 @@
 
 **Sylph** is a program that performs (1) **metagenomic profiling** or (2) **containment average nucleotide identity querying** for metagenomic shotgun sequencing samples. 
 
-- **Metagenomic profiling**: sylph can determine the species/taxa in your sample and their abundances, just like [Kraken](https://ccb.jhu.edu/software/kraken/) or [MetaPhlAn](https://github.com/biobakery/MetaPhlAn).
+- **Metagenomic profiling**: sylph can determine the species/taxa in your metagenomic reads and their abundances, just like [Kraken](https://ccb.jhu.edu/software/kraken/) or [MetaPhlAn](https://github.com/biobakery/MetaPhlAn).
 
-- **Containment ANI querying**: sylph can search a genome, e.g. E. coli, against your sample. If sylph outputs an estimate of 97% ANI, your sample contains an E. coli with 97% ANI to the queried genome.
+- **Containment ANI querying**: sylph can search a genome, e.g. E. coli, against your metagenomic reads. If sylph outputs an estimate of 97% ANI, your sample contains an E. coli with 97% ANI to the queried genome.
 
 <p align="center"><img src="assets/sylph.gif?raw=true"/></p>
 <p align="center">

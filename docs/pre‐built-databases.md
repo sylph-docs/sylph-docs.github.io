@@ -1,9 +1,10 @@
 ## Usage notes
 
-Pre-sketched databases available for download below. All databases work from sylph version 0.3.x onwards. 
+Pre-sketched databases are available for download below. 
 
 * Use the **Primary** links hosted at `http://faust.compbio.cs.cmu.edu` if possible. We provide mirrors on google cloud, but this costs us more money.
-* As of sylph v1.0.0, some databases are also available as `.syl2db` (two-stage) files — faster and less memory for large prokaryotic genome collections, almost no differences.
+* See [Parameter Guide](#parameter-guide) below for algorithmic parameter information. 
+* See [Database Descriptions](#database-descriptions) below for database information. 
 
 #### Example usage:
 
@@ -21,7 +22,7 @@ Most of the databases have associated taxonomies that sylph can utilize. See [he
 
 
 
-# Databases
+# Databases (table scrolls to the right)
 
 | Type | Name | Genomes | c-parameter | Size | Primary Download Link | Mirror | Notes |
 |---------------|---------------|---------------|-------------|------|----------------------|--------|-------|
@@ -52,13 +53,21 @@ Most of the databases have associated taxonomies that sylph can utilize. See [he
 - **-c 200**: More sensitive, larger file size
 - **-c 1000**: More efficient, smaller file size, less sensitive
 - **-c 100**: More sensitive but primarily for smaller genomes. 
-- **`.syl2db` (Preferred)**: New two-stage database format for prokaryotes. Requires sylph >= v1.0.0. Even faster than `-c1000` with the sensitivity of `-c200`. 
+- **`.syl2db` (Preferred)**: New two-stage database format for genomes > 200 kbp. Requires sylph >= v1.0.0. Even faster than `-c1000` while having the sensitivity of `-c200`. 
 
 !!! note
 
-    `-c 200` is used by default, so `-c 100` must be specified if using a database with -c 100. For example:
+    `-c 200` is used by default, so`-c 100` must be specified for sketching if using a database with -c 100. For example:
     
-    ```sylph profile c100_database c1000_database -c100 -1 read1.fq -2 read2.fq```. 
+    ```sh
+    # good
+    sylph sketch reads.fq -c 100 -d c100_reads/
+    sylph profile c100_database c100_reads/* 
+
+    # the below does not work 
+    # sylph sketch reads.fq -c 200 -d c200_reads/ # default
+    # sylph profile c100_database c200_reads/* 
+    ```
 
 
 # Database descriptions 
